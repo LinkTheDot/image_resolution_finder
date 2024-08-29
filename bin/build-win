@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+
+PROFILE=$1
+FINAL_DEST=$2
+NEW_BINARY_NAME=$3
+
+if [[ -z $FINAL_DEST ]]; then
+  echo "No final destination specified."
+
+  return 1;
+fi 
+
+if [[ ! -e "$FINAL_DEST" ]]; then
+  echo "Final destination does not exist: $FINAL_DEST"
+
+  return 1;
+fi
+
+if [[ ! -z $NEW_BINARY_NAME ]]; then
+  FINAL_DEST="$final_dest/$NEW_BINARY_NAME"
+fi
+
+BUILD_TARGET="x86_64-pc-windows-gnu"
+EXECUTABLE_LOCATION=$(echo ./target/$BUILD_TARGET/$PROFILE/*.exe)
+
+if [[ ! -z "$PROFILE" ]]; then 
+  cargo build --$PROFILE --target $BUILD_TARGET;
+else
+  cargo build --target $BUILD_TARGET;
+fi
+
+error_code=$?
+
+if [[ $error_code -ne 0 ]]; then
+  echo "Failed to compile rust project: Exiting with error code $error_code"
+
+  return $error_code;
+fi
+
+for file in EXECUTABLE_LOCATION; do 
+  echo "Copying $EXECUTABLE_LOCATION to $FINAL_DEST"
+
+  cp "$EXECUTABLE_LOCATION" "$FINAL_DEST"
+done
+
+return 0;

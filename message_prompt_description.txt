@@ -1,0 +1,11 @@
+This program will take a few parameters in {CONFIG_FILE_NAME}, and use that information to read the desired directories and images, and copy those images to a determined destination directory.
+
+Please edit the {CONFIG_FILE_NAME} file, and select Ok when finished.
+
+When modifying the {CONFIG_FILE_NAME} file, first start by defining the minimum width and height of the desired images. 
+Second, you can define a destination to copy the images into.
+Third, you will set if you have a preference for image dimensions. The options are tall, wide, and none. Tall will only select images that are taller than they are wide, and wide will only select images that are wider than they are tall. None will ignore this.
+Fourth and finally, after all those are set, you can determine which directories you wish to check. Each value in the list will indicate a new directory, however defining no directories will imply all child directories of the current one.
+
+Once finished editing the {CONFIG_FILE_NAME} file, select Ok.
+If you wish to cancel the operation entirely, select Cancel.
