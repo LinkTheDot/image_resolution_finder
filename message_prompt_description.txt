@@ -1,6 +1,7 @@
 This program will take a few parameters in {CONFIG_FILE_NAME}, and use that information to read the desired directories and images, and copy those images to a determined destination directory.
 
 Please edit the {CONFIG_FILE_NAME} file, and select Ok when finished.
+! Do not close this window until you are finished editing the config. !
 
 When modifying the {CONFIG_FILE_NAME} file, first start by defining the minimum width and height of the desired images. 
 Second, you can define a destination to copy the images into.
